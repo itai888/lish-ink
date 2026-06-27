@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LISH INK – לישי נתן | קעקועים</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #1a1410;
+      --warm:   #c8a96e;
+      --cream:  #f5f0e8;
+      --smoke:  #e8e0d0;
+      --muted:  #7a6f60;
+      --accent: #8b4a2f;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(200,169,110,0.25);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--warm); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.25s;
+    }
+
+    nav a:hover { color: var(--warm); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 40% at 50% 60%, rgba(200,169,110,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--warm);
+    }
+
+    .hero-sub {
+      max-width: 420px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2.8rem;
+      line-height: 1.8;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--warm);
+    }
+
+    .btn-outline:hover {
+      background: var(--warm);
+      color: var(--ink);
+    }
+
+    /* ── PROMO BANNER ── */
+    .promo-banner {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+      padding: 1.1rem 2rem;
+      position: relative;
+    }
+
+    .promo-banner p {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+    }
+
+    .promo-banner strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 0.92rem;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      max-width: 820px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img {
+      aspect-ratio: 3/4;
+      background: var(--smoke);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-img::after {
+      content: '✦';
+      font-size: 3rem;
+      color: var(--warm);
+      opacity: 0.4;
+    }
+
+    .placeholder-note {
+      position: absolute;
+      bottom: 1rem;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--smoke); }
+
+    .gallery-header {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+    }
+
+    .gallery-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--cream);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 2px;
+    }
+
+    .gallery-item .gallery-icon {
+      font-size: 2rem;
+      color: var(--warm);
+      opacity: 0.35;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-item-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* ── DISCOUNT ── */
+    .discount-section {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .discount-section .section-title {
+      color: var(--cream);
+    }
+
+    .discount-section .section-label {
+      color: var(--warm);
+    }
+
+    .discount-badge {
+      display: inline-block;
+      background: var(--warm);
+      color: var(--ink);
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      margin: 2rem 0;
+      letter-spacing: 0.04em;
+    }
+
+    .discount-section p {
+      color: rgba(245,240,232,0.65);
+      font-size: 0.88rem;
+      max-width: 400px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--warm); }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--warm);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover .contact-icon {
+      background: var(--warm);
+    }
+
+    /* ── FORM ── */
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--smoke);
+      border: 1px solid rgba(200,169,110,0.3);
+      border-radius: 2px;
+      padding: 0.7rem 0.9rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--warm);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(245,240,232,0.45);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--warm);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    /* ── DIVIDER ── */
+    .ornament {
+      text-align: center;
+      color: var(--warm);
+      opacity: 0.5;
+      font-size: 1rem;
+      letter-spacing: 0.5em;
+      margin: 1.5rem 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav ul { display: none; }
+      .about { grid-template-columns: 1fr; gap: 2rem; }
+      .about-img { aspect-ratio: 4/3; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── SUCCESS MSG ── */
+    .success-msg {
+      display: none;
+      background: rgba(200,169,110,0.15);
+      border: 1px solid var(--warm);
+      color: var(--accent);
+      padding: 0.8rem 1rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#top">LISH <span>INK</span></a>
+    <ul>
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#gallery">פלאשים</a></li>
+      <li><a href="#discount">מבצע</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="hero-eyebrow">לישי נתן · קעקועים בגוף ונפש</p>
+    <h1>LISH<br><em>INK</em></h1>
+    <p class="hero-sub">
+      אמנות על עור. כל קעקוע הוא סיפור ייחודי שנולד מתוך שיחה עמוקה בינינו.
+    </p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-primary">קביעת פגישת ייעוץ</a>
+      <a href="#gallery" class="btn btn-outline">פלאשים זמינים</a>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner">
+    <p>🌙 <strong>מבצע פתיחה:</strong> 20% הנחה על הקעקוע הראשון · לזמן מוגבל</p>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about">
+      <div class="about-img">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+        </div>
+        <span class="placeholder-note">תמונה של לישי</span>
+      </div>
+      <div>
+        <p class="section-label">אודות</p>
+        <h2 class="section-title">היי, אני לישי</h2>
+        <div class="ornament">· · ·</div>
+        <p class="section-desc">
+          מקעקעת עם אהבה לפרטים הקטנים, לקווים עדינים ולסיפורים שמחכים להיות מוטבעים על העור.
+          <br><br>
+          כל לקוח מגיע עם עולם שלם בתוכו — התפקיד שלי הוא להפוך אותו לאמנות שתישאר איתך לכל החיים.
+        </p>
+        <br>
+        <a href="#contact" class="btn btn-outline">בוא/י נדבר</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASH -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-header">
+      <p class="section-label">זמינים עכשיו</p>
+      <h2 class="section-title">פלאשים זמינים</h2>
+      <p class="section-desc">עיצובים מוכנים שניתן לקעקע מיד — כל פלאש הוא חד פעמי ולא יחזור.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+          <span>פלאש 1</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+          <span>פלאש 2</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+          <span>פלאש 3</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+          <span>פלאש 4</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+          <span>פלאש 5</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-item-inner">
+          <span class="gallery-icon">✦</span>
+          <span>פלאש 6</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCOUNT -->
+  <section class="discount-section" id="discount">
+    <p class="section-label">מבצע פתיחה</p>
+    <h2 class="section-title">הנחה מיוחדת<br>לתקופה הראשונה</h2>
+    <div class="discount-badge">20% הנחה</div>
+    <p>על כל קעקוע שיתואם במהלך תקופת הפתיחה.<br>ספרי לחברות — ההנחה בתוקף גם להפניות.</p>
+    <a href="#contact" class="btn btn-outline">לתיאום עכשיו</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-section">
+      <p class="section-label">צור קשר</p>
+      <h2 class="section-title">בואו נדבר</h2>
+      <p class="section-desc">מלאו את הטופס או צרו קשר ישירות — אחזור אליכם תוך 24 שעות.</p>
+
+      <div class="contact-grid">
+        <!-- INFO -->
+        <div class="contact-info">
+          <h3>דרכי יצירת קשר</h3>
+          <div class="contact-links">
+            <a href="tel:+972503909050" class="contact-link">
+              <div class="contact-icon">📞</div>
+              <span>0503909050</span>
+            </a>
+            <a href="https://wa.me/972503909050?text=היי%2C%20אני%20מעוניין/ת%20לעשות%20קעקוע%20ואשמח%20לשמוע%20עוד%20פרטים" target="_blank" class="contact-link">
+              <div class="contact-icon">💬</div>
+              <span>וואטסאפ</span>
+            </a>
+            <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" class="contact-link">
+              <div class="contact-icon">📷</div>
+              <span>@lishink</span>
+            </a>
+            <a href="https://tiktok.com/@YOUR_TIKTOK" target="_blank" class="contact-link">
+              <div class="contact-icon">🎵</div>
+              <span>TikTok</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">שם מלא</label>
+              <input type="text" id="name" placeholder="השם שלך" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">טלפון</label>
+              <input type="tel" id="phone" placeholder="050-0000000" required />
+            </div>
+            <div class="form-group">
+              <label for="idea">הרעיון שלך</label>
+              <textarea id="idea" placeholder="ספר/י לי על הקעקוע שחלמת עליו..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn">שליחה ✦</button>
+            <div class="success-msg" id="successMsg">תודה! אחזור אליך בהקדם 🌙</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">LISH <span style="color: var(--cream);">INK</span>.</span>
+    <p>© 2025 לישי נתן · כל הזכויות שמורות</p>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('successMsg').style.display = 'block';
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
