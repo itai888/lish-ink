@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LISH INK. – לישי נתן | קעקועים</title>
+  <title>LISH INK – לישי נתן | קעקועים</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -637,21 +637,20 @@
 
         <!-- FORM -->
         <div class="contact-form">
-          <form id="contactForm">
+          <form id="contactForm" action="https://formspree.io/f/xzdlgevg" method="POST">
             <div class="form-group">
               <label for="name">שם מלא</label>
-              <input type="text" id="name" placeholder="השם שלך" required />
+              <input type="text" id="name" name="name" placeholder="השם שלך" required />
             </div>
             <div class="form-group">
               <label for="phone">טלפון</label>
-              <input type="tel" id="phone" placeholder="050-0000000" required />
+              <input type="tel" id="phone" name="phone" placeholder="050-0000000" required />
             </div>
             <div class="form-group">
               <label for="idea">הרעיון שלך</label>
-              <textarea id="idea" placeholder="ספר/י לי על הקעקוע שחלמת עליו..." required></textarea>
+              <textarea id="idea" name="idea" placeholder="ספר/י לי על הקעקוע שחלמת עליו..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary submit-btn">שליחה ✦</button>
-            <div class="success-msg" id="successMsg">תודה! אחזור אליך בהקדם 🌙</div>
           </form>
         </div>
       </div>
@@ -660,19 +659,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">.LISH <span style="color: var(--cream);">INK</span>.</span>
+    <span class="footer-logo">LISH <span style="color: var(--cream);">INK</span>.</span>
     <p>© 2025 לישי נתן · כל הזכויות שמורות</p>
   </footer>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('successMsg').style.display = 'block';
-      this.reset();
-      setTimeout(() => {
-        document.getElementById('successMsg').style.display = 'none';
-      }, 5000);
-    });
-  </script>
+  <script></script>
 </body>
 </html>
